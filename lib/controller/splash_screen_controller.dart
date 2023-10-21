@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sportapplication/views/introduction_screen.dart';
 
 class SplashScreenController extends GetxController {
   RxInt scale = 0.obs;
@@ -8,6 +9,9 @@ class SplashScreenController extends GetxController {
     Future.delayed(Duration(milliseconds: 400), () {
       scale.value = 1;
       scale.refresh();
+    });
+    Future.delayed(Duration(seconds: 2), () {
+      Get.offAllNamed(IntroductionScreen.routeName);
     });
   }
 }

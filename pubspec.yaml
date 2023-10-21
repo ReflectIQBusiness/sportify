@@ -9,7 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.5
   get: ^4.6.5
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
@@ -17,9 +19,16 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+
+  uses-material-design: true
+
   assets: 
     - assets/
-  uses-material-design: true
+  
+  fonts:
+    - family: Anton
+      fonts:
+        - asset: assets/fonts/Anton-Regular.ttf
   
 
 
