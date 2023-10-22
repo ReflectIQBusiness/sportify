@@ -13,7 +13,20 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData(
+        useMaterial3: true,
+        textTheme: TextTheme(
+          headlineLarge: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: Get.width / 15,
+            letterSpacing: 2,
+          ),
+          headlineMedium: TextStyle(
+            fontSize: Get.width / 20,
+            letterSpacing: 2,
+          ),
+        ),
+      ),
       getPages: routes,
       home: SplashScreen(),
     );

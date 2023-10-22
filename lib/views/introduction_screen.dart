@@ -40,7 +40,9 @@ class IntroductionScreen extends StatelessWidget {
     return Align(
       alignment: Alignment.topRight,
       child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            controller.skip();
+          },
           child: const Text(
             'Skip',
             style: TextStyle(color: Colors.black, decoration: TextDecoration.underline),
