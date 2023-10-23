@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sportapplication/views/inscription.dart';
 
 class LoginController extends GetxController {
   TextEditingController emailController = TextEditingController();
@@ -8,5 +9,9 @@ class LoginController extends GetxController {
   showPassword() {
     visible.value = !visible.value;
     visible.refresh();
+  }
+
+  goToInscription() {
+    Get.toNamed(Inscription.routeName);
   }
 }
