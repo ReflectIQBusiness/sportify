@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sportapplication/views/verify_phone.dart';
 
 class InscriptionScreenController extends GetxController {
   TextEditingController fullNameController = TextEditingController();
@@ -9,6 +10,19 @@ class InscriptionScreenController extends GetxController {
   TextEditingController heightController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+
+  //controller for textfield pin code
+  TextEditingController pin1Controller = TextEditingController();
+  TextEditingController pin2Controller = TextEditingController();
+  TextEditingController pin3Controller = TextEditingController();
+  TextEditingController pin4Controller = TextEditingController();
+  TextEditingController pin5Controller = TextEditingController();
+  //focus node for pin code
+  FocusNode pin1FocusNode = FocusNode();
+  FocusNode pin2FocusNode = FocusNode();
+  FocusNode pin3FocusNode = FocusNode();
+  FocusNode pin4FocusNode = FocusNode();
+  FocusNode pin5FocusNode = FocusNode();
 
   RxString selectedValue = "men".obs;
   RxString selectedWeightValue = "Kg".obs;
@@ -52,5 +66,9 @@ class InscriptionScreenController extends GetxController {
   showPasswordConfirm() {
     visibleConfirm.value = !visibleConfirm.value;
     visibleConfirm.refresh();
+  }
+
+  goToVerifyPin() {
+    Get.toNamed(VerifyPin.routeName);
   }
 }

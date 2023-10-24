@@ -109,7 +109,9 @@ class Inscription extends StatelessWidget {
 
   Widget createRegisterButton() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        controller.goToVerifyPin();
+      },
       style: ElevatedButton.styleFrom(
         minimumSize: Size(Get.width, 50),
         backgroundColor: orangeCustom,

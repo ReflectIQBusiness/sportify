@@ -3,6 +3,7 @@ import 'package:sportapplication/views/inscription.dart';
 import 'package:sportapplication/views/introduction_screen.dart';
 import 'package:sportapplication/views/login.dart';
 import 'package:sportapplication/views/splash_screen.dart';
+import 'package:sportapplication/views/verify_phone.dart';
 
 var routes = [
   GetPage(
@@ -25,6 +26,12 @@ var routes = [
     name: Inscription.routeName,
     page: () => Inscription(),
     transition: Transition.leftToRightWithFade,
+    transitionDuration: Duration(milliseconds: 400),
+  ),
+  GetPage(
+    name: VerifyPin.routeName,
+    page: () => VerifyPin(),
+    transition: Transition.rightToLeft,
     transitionDuration: Duration(milliseconds: 400),
   ),
 ];
