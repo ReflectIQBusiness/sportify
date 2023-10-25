@@ -49,7 +49,9 @@ class VerifyPin extends StatelessWidget {
               horizontal: Get.width / 20,
             ),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                controller.verifyPin(context);
+              },
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(Get.width, 50),
                 backgroundColor: orangeCustom,

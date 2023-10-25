@@ -1,4 +1,5 @@
 import 'package:get/route_manager.dart';
+import 'package:sportapplication/views/choose_profile_pic.dart';
 import 'package:sportapplication/views/inscription.dart';
 import 'package:sportapplication/views/introduction_screen.dart';
 import 'package:sportapplication/views/login.dart';
@@ -31,6 +32,12 @@ var routes = [
   GetPage(
     name: VerifyPin.routeName,
     page: () => VerifyPin(),
+    transition: Transition.rightToLeft,
+    transitionDuration: Duration(milliseconds: 400),
+  ),
+  GetPage(
+    name: ChooseProfilePic.routeName,
+    page: () => ChooseProfilePic(),
     transition: Transition.rightToLeft,
     transitionDuration: Duration(milliseconds: 400),
   ),
