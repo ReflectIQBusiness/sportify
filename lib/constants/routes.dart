@@ -3,6 +3,7 @@ import 'package:sportapplication/views/choose_profile_pic.dart';
 import 'package:sportapplication/views/inscription.dart';
 import 'package:sportapplication/views/introduction_screen.dart';
 import 'package:sportapplication/views/login.dart';
+import 'package:sportapplication/views/set_objectif_screen.dart';
 import 'package:sportapplication/views/splash_screen.dart';
 import 'package:sportapplication/views/verify_phone.dart';
 
@@ -38,6 +39,12 @@ var routes = [
   GetPage(
     name: ChooseProfilePic.routeName,
     page: () => ChooseProfilePic(),
+    transition: Transition.rightToLeft,
+    transitionDuration: Duration(milliseconds: 400),
+  ),
+  GetPage(
+    name: SetObjectifScreen.routeName,
+    page: () => SetObjectifScreen(),
     transition: Transition.rightToLeft,
     transitionDuration: Duration(milliseconds: 400),
   ),

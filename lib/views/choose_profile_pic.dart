@@ -26,7 +26,9 @@ class ChooseProfilePic extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: Get.width / 20, horizontal: Get.width / 20),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          controller.changePicture();
+        },
         style: ElevatedButton.styleFrom(
           minimumSize: Size(Get.width, 50),
           backgroundColor: orangeCustom,
@@ -143,7 +145,9 @@ class ChooseProfilePic extends StatelessWidget {
         left: Get.width / 1.3,
       ),
       child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            controller.changePicture();
+          },
           child: const Text(
             "Skip",
             style: TextStyle(
