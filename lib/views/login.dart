@@ -54,6 +54,8 @@ class Login extends StatelessWidget {
               focusBorderLabel,
             ),
             createDividerSizedBox(),
+            createForgetPassword(),
+            createDividerSizedBox(),
             createOrDivider(),
             createDividerSizedBox(),
             createSocialLogin(),
@@ -66,6 +68,22 @@ class Login extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Center createForgetPassword() {
+    return Center(
+        child: RichText(
+            text: TextSpan(style: const TextStyle(color: Colors.black), children: [
+      const TextSpan(text: "You forget your password? "),
+      TextSpan(
+        recognizer: TapGestureRecognizer()..onTap = () => controller.goToForgetPage(),
+        text: "help",
+        style: const TextStyle(
+          decoration: TextDecoration.underline,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ])));
   }
 
   Widget createDividerSizedBox() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sportapplication/views/forget_page.dart';
 import 'package:sportapplication/views/inscription.dart';
 
 class LoginController extends GetxController {
@@ -13,5 +14,9 @@ class LoginController extends GetxController {
 
   goToInscription() {
     Get.toNamed(Inscription.routeName);
+  }
+
+  goToForgetPage() {
+    Get.toNamed(ForgetPage.routeName);
   }
 }
