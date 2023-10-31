@@ -94,7 +94,9 @@ class Login extends StatelessWidget {
 
   Widget createLoginButton() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        controller.goToHomePage();
+      },
       style: ElevatedButton.styleFrom(
         minimumSize: Size(Get.width, 50),
         backgroundColor: orangeCustom,

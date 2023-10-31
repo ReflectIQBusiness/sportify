@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sportapplication/constants/colors.dart';
 import 'package:sportapplication/views/choose_profile_pic.dart';
+import 'package:sportapplication/views/home_page.dart';
 import 'package:sportapplication/views/verify_phone.dart';
 
 class InscriptionScreenController extends GetxController {
@@ -125,5 +126,9 @@ class InscriptionScreenController extends GetxController {
         pageBuilder: (context, animation1, animation2) {
           return SizedBox();
         });
+  }
+
+  goToHomePage() {
+    Get.offAllNamed(HomePage.routeName);
   }
 }

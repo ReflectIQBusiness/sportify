@@ -1,6 +1,7 @@
 import 'package:get/route_manager.dart';
 import 'package:sportapplication/views/choose_profile_pic.dart';
 import 'package:sportapplication/views/forget_page.dart';
+import 'package:sportapplication/views/home_page.dart';
 import 'package:sportapplication/views/inscription.dart';
 import 'package:sportapplication/views/introduction_screen.dart';
 import 'package:sportapplication/views/login.dart';
@@ -52,6 +53,12 @@ var routes = [
   GetPage(
     name: ForgetPage.routeName,
     page: () => ForgetPage(),
+    transition: Transition.rightToLeft,
+    transitionDuration: Duration(milliseconds: 400),
+  ),
+  GetPage(
+    name: HomePage.routeName,
+    page: () => HomePage(),
     transition: Transition.rightToLeft,
     transitionDuration: Duration(milliseconds: 400),
   ),

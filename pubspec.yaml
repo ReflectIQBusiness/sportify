@@ -14,6 +14,9 @@ dependencies:
   shared_preferences: ^2.2.2
   image_picker: ^0.8.4+5
   image_cropper: ^4.0.1
+  cupertino_icons: ^1.0.6
+  glassmorphism: ^3.0.0
+  syncfusion_flutter_charts: 21.2.3
 
 
 dev_dependencies:
