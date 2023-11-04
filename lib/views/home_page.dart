@@ -69,28 +69,33 @@ class HomePage extends StatelessWidget {
   }
 
   Widget createProgramWidget(Program element) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: Get.height / 5,
-        width: Get.width,
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(color: Colors.black.withOpacity(0.16), blurRadius: 5, spreadRadius: 2),
-          ],
-          borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(
-            image: NetworkImage(
-              element.image,
+    return InkWell(
+      onTap: () {
+        homePageController.goToDetail(element.id);
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          height: Get.height / 5,
+          width: Get.width,
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(color: Colors.black.withOpacity(0.16), blurRadius: 5, spreadRadius: 2),
+            ],
+            borderRadius: BorderRadius.circular(10),
+            image: DecorationImage(
+              image: NetworkImage(
+                element.image,
+              ),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.darken),
             ),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.darken),
           ),
-        ),
-        child: Center(
-          child: Text(
-            element.name,
-            style: Get.textTheme.headlineLarge!.copyWith(color: orangeCustom),
+          child: Center(
+            child: Text(
+              element.name,
+              style: Get.textTheme.headlineLarge!.copyWith(color: orangeCustom),
+            ),
           ),
         ),
       ),
