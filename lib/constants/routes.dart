@@ -9,6 +9,7 @@ import 'package:sportapplication/views/login.dart';
 import 'package:sportapplication/views/set_objectif_screen.dart';
 import 'package:sportapplication/views/splash_screen.dart';
 import 'package:sportapplication/views/verify_phone.dart';
+import 'package:sportapplication/views/video_screen.dart';
 
 var routes = [
   GetPage(
@@ -66,6 +67,12 @@ var routes = [
   GetPage(
     name: DetailPrograms.routeName,
     page: () => DetailPrograms(),
+    transition: Transition.rightToLeft,
+    transitionDuration: Duration(milliseconds: 400),
+  ),
+  GetPage(
+    name: VideoScreen.routeName,
+    page: () => VideoScreen(),
     transition: Transition.rightToLeft,
     transitionDuration: Duration(milliseconds: 400),
   ),

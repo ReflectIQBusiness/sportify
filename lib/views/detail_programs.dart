@@ -58,29 +58,34 @@ class DetailPrograms extends StatelessWidget {
     );
   }
 
-  Container createProgramContainer(VideoPlayerController element) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(
-            image: NetworkImage(YoutubePlayer.getThumbnail(
-              videoId: YoutubePlayer.convertUrlToId(element.dataSource)!,
-            )),
-          )),
+  Widget createProgramContainer(VideoPlayerController element) {
+    return InkWell(
+      onTap: () {
+        homePageController.goToVideoPage(element);
+      },
       child: Container(
-        height: Get.height / 8,
-        alignment: Alignment.bottomCenter,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(
-              colors: [
-                Colors.black.withOpacity(0.2),
-                Colors.black,
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+            image: DecorationImage(
+              image: NetworkImage(YoutubePlayer.getThumbnail(
+                videoId: YoutubePlayer.convertUrlToId(element.dataSource)!,
+              )),
             )),
-        child: createColumnDurationAndLevel(element),
+        child: Container(
+          height: Get.height / 8,
+          alignment: Alignment.bottomCenter,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: LinearGradient(
+                colors: [
+                  Colors.black.withOpacity(0.2),
+                  Colors.black,
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              )),
+          child: createColumnDurationAndLevel(element),
+        ),
       ),
     );
   }

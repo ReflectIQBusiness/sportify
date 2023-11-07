@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:sportapplication/models/calorie.dart';
 import 'package:sportapplication/models/program.dart';
 import 'package:sportapplication/views/detail_programs.dart';
+import 'package:sportapplication/views/video_screen.dart';
 import 'package:video_player/video_player.dart';
 
 class HomePageController extends GetxController {
@@ -38,6 +39,13 @@ class HomePageController extends GetxController {
       image: "https://hugesupplements.com/cdn/shop/articles/Best-shoulder-workout-for-muscle-mass.jpg?v=1614950209",
     ),
   ].obs;
+  final List<String> absWorkoutInstructions = [
+    "Warm up for 5 minutes with light cardio.",
+    "Do 3 sets of 15 push-ups.",
+    "Perform 3 sets of 12 squats.",
+    "Rest for 2 minutes between sets.",
+    "Finish with a 10-minute cool-down and stretching.",
+  ];
   RxList<VideoPlayerController> detailsProgram = <VideoPlayerController>[].obs;
   changeIndex(int index) {
     currentIndex.value = index;
@@ -77,5 +85,9 @@ class HomePageController extends GetxController {
       ];
     }
     Get.toNamed(DetailPrograms.routeName, arguments: program.firstWhere((element) => element.id == index));
+  }
+
+  goToVideoPage(element) {
+    Get.toNamed(VideoScreen.routeName, arguments: element);
   }
 }

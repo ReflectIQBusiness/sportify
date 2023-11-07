@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:sportapplication/constants/routes.dart';
+import 'package:sportapplication/views/home_page.dart';
 import 'package:sportapplication/views/splash_screen.dart';
 
 void main() {
@@ -28,7 +29,7 @@ class MainApp extends StatelessWidget {
         ),
       ),
       getPages: routes,
-      home: SplashScreen(),
+      home: HomePage(),
     );
   }
 }
