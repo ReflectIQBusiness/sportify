@@ -2,7 +2,7 @@ import 'package:get/route_manager.dart';
 import 'package:sportapplication/views/choose_profile_pic.dart';
 import 'package:sportapplication/views/detail_programs.dart';
 import 'package:sportapplication/views/forget_page.dart';
-import 'package:sportapplication/views/home_page.dart';
+import 'package:sportapplication/views/home_page/home_page.dart';
 import 'package:sportapplication/views/inscription.dart';
 import 'package:sportapplication/views/introduction_screen.dart';
 import 'package:sportapplication/views/login.dart';

@@ -1,60 +1,45 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:glassmorphism/glassmorphism.dart';
 import 'package:sportapplication/constants/colors.dart';
 import 'package:sportapplication/controller/home_page_controller.dart';
-import 'package:glassmorphism/glassmorphism.dart';
 import 'package:sportapplication/models/calorie.dart';
 import 'package:sportapplication/models/program.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
-  static const routeName = "/home-page";
-  final HomePageController homePageController = Get.isRegistered<HomePageController>() ? Get.find<HomePageController>() : Get.put(HomePageController());
+class Dashboard extends StatelessWidget {
+  final HomePageController homePageController;
+  const Dashboard({super.key, required this.homePageController});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Obx(
-        () {
-          var valuesStyle = TextStyle(
-            color: Colors.white,
-            fontSize: Get.width / 25,
-            fontWeight: FontWeight.bold,
-          );
-          return IndexedStack(index: homePageController.currentIndex.value, children: [
-            SingleChildScrollView(
-              padding: EdgeInsets.only(
-                left: Get.width / 20,
-                right: Get.width / 20,
-                top: Get.height / 20,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  createAppBar(),
-                  createDivider(),
-                  createTodayRowData(valuesStyle),
-                  createDivider(),
-                  createChartWidget(),
-                  createDivider(),
-                  createDivider(),
-                  createTitleWorkout(),
-                  createDivider(),
-                  createWorkouts()
-                ],
-              ),
-            ),
-            Container(
-              color: Colors.blue,
-            ),
-            Container(
-              color: Colors.green,
-            ),
-          ]);
-        },
+    var valuesStyle = TextStyle(
+      color: Colors.white,
+      fontSize: Get.width / 25,
+      fontWeight: FontWeight.bold,
+    );
+    return SingleChildScrollView(
+      padding: EdgeInsets.only(
+        left: Get.width / 20,
+        right: Get.width / 20,
+        top: Get.height / 20,
       ),
-      bottomNavigationBar: createBottomNavigationBar(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          createAppBar(),
+          createDivider(),
+          createTodayRowData(valuesStyle),
+          createDivider(),
+          createChartWidget(),
+          createDivider(),
+          createDivider(),
+          createTitleWorkout(),
+          createDivider(),
+          createWorkouts()
+        ],
+      ),
     );
   }
 
@@ -154,7 +139,7 @@ class HomePage extends StatelessWidget {
             tooltipBehavior: TooltipBehavior(enable: true),
             series: <ChartSeries>[
               BarSeries<Calorie, String>(
-                dataSource: homePageController.dataCalories.value.reversed.toList(),
+                dataSource: homePageController.dataCalories.reversed.toList(),
                 xValueMapper: (data, _) => data.date,
                 yValueMapper: (data, _) => data.calorie,
                 dataLabelSettings: const DataLabelSettings(isVisible: true),
@@ -356,37 +341,6 @@ class HomePage extends StatelessWidget {
           ),
         )
       ],
-    );
-  }
-
-  Widget createBottomNavigationBar() {
-    return Obx(
-      () => BottomNavigationBar(
-        iconSize: Get.width / 16,
-        onTap: (index) {
-          homePageController.changeIndex(index);
-        },
-        unselectedItemColor: Colors.grey.withOpacity(0.5),
-        type: BottomNavigationBarType.shifting,
-        currentIndex: homePageController.currentIndex.value,
-        fixedColor: orangeCustom,
-        selectedFontSize: Get.width / 30,
-        landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.doc_plaintext),
-            label: 'Plan',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
-            label: 'More',
-          ),
-        ],
-      ),
     );
   }
 }

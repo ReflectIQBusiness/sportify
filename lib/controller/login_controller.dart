@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sportapplication/views/forget_page.dart';
-import 'package:sportapplication/views/home_page.dart';
+import 'package:sportapplication/views/home_page/home_page.dart';
 import 'package:sportapplication/views/inscription.dart';
 
 class LoginController extends GetxController {

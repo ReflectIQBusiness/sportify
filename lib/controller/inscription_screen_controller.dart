@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sportapplication/constants/colors.dart';
 import 'package:sportapplication/views/choose_profile_pic.dart';
-import 'package:sportapplication/views/home_page.dart';
+import 'package:sportapplication/views/home_page/home_page.dart';
 import 'package:sportapplication/views/verify_phone.dart';
 
 class InscriptionScreenController extends GetxController {

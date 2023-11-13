@@ -25,7 +25,7 @@ DEPENDENCIES:
   - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
   - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
-  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/ios`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
 
 SPEC REPOS:
@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
   shared_preferences_foundation:
-    :path: ".symlinks/plugins/shared_preferences_foundation/ios"
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   video_player_avfoundation:
     :path: ".symlinks/plugins/video_player_avfoundation/ios"
 
