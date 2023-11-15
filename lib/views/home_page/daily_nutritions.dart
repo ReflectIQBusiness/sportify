@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:sportapplication/constants/colors.dart';
 import 'package:sportapplication/controller/home_page_controller.dart';
 import 'package:sportapplication/models/ingredient.dart';
+import 'package:sportapplication/views/home_page/add_element.dart';
 
 class DailyNutritions extends StatelessWidget {
   const DailyNutritions({
@@ -358,7 +359,9 @@ class DailyNutritions extends StatelessWidget {
       child: Row(
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(AddElement.routeName);
+            },
             icon: SvgPicture.asset(
               'assets/add.svg',
             ),

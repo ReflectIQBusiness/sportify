@@ -1,7 +1,12 @@
+import 'dart:convert';
+import 'dart:ffi';
+
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:sportapplication/models/calorie.dart';
 import 'package:sportapplication/models/ingredient.dart';
 import 'package:sportapplication/models/program.dart';
+import 'package:sportapplication/services/search_element.dart';
 import 'package:sportapplication/views/detail_programs.dart';
 import 'package:sportapplication/views/video_screen.dart';
 import 'package:video_player/video_player.dart';
@@ -74,6 +79,7 @@ class HomePageController extends GetxController {
       'isSelected': false,
     },
   ].obs;
+
   RxList<Ingredient> ingredients = [
     Ingredient(
       id: 1,
@@ -103,6 +109,10 @@ class HomePageController extends GetxController {
     )
   ].obs;
 
+  RxList foodList = [].obs;
+
+  Rx<TextEditingController> searchController = TextEditingController().obs;
+  RxBool editMode = false.obs;
   changeIndex(int index) {
     currentIndex.value = index;
     currentIndex.refresh();
@@ -158,5 +168,28 @@ class HomePageController extends GetxController {
   void changeDate(DateTime selectedDate) {
     this.selectedDate.value = selectedDate;
     this.selectedDate.refresh();
+  }
+
+  void searchFoodByName() {
+    SearchElement()
+        .searchFoodByName(
+      searchController.value.text,
+    )
+        .then((response) {
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        foodList.value = data['items'];
+        editMode.value = false;
+        editMode.refresh();
+      }
+    });
+  }
+
+  void onChangedSearch(String value) {
+    searchController.value.text = value;
+    editMode.value = true;
+    editMode.refresh();
+    searchController.refresh();
   }
 }

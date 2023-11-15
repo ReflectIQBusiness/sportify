@@ -2,6 +2,7 @@ import 'package:get/route_manager.dart';
 import 'package:sportapplication/views/choose_profile_pic.dart';
 import 'package:sportapplication/views/detail_programs.dart';
 import 'package:sportapplication/views/forget_page.dart';
+import 'package:sportapplication/views/home_page/add_element.dart';
 import 'package:sportapplication/views/home_page/home_page.dart';
 import 'package:sportapplication/views/inscription.dart';
 import 'package:sportapplication/views/introduction_screen.dart';
@@ -75,5 +76,10 @@ var routes = [
     page: () => VideoScreen(),
     transition: Transition.rightToLeft,
     transitionDuration: Duration(milliseconds: 400),
+  ),
+  GetPage(
+    name: AddElement.routeName,
+    page: () => AddElement(),
+    transition: Transition.rightToLeft,
   ),
 ];
