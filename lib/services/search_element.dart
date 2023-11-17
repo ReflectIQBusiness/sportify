@@ -7,7 +7,7 @@ class SearchElement {
     );
     return http.get(
       url,
-      headers: {'X-Api-Key': 'wAvPrJP94dJiRdgoXdD+1w==vIgE9pZFgPbIwCZz'},
+      headers: {'X-Api-Key': 'Your-Api-key'},
     );
   }
 }
