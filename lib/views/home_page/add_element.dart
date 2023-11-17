@@ -62,7 +62,9 @@ class AddElement extends StatelessWidget {
                 contentPadding: EdgeInsets.symmetric(
                   horizontal: Get.width / 15,
                 ),
-                onTap: () {},
+                onTap: () {
+                  homePageController.goToDetailElement(element);
+                },
                 leading: CircleAvatar(
                   backgroundColor: orangeCustom,
                   child: Text(
@@ -178,19 +180,4 @@ class AddElement extends StatelessWidget {
           ),
         ));
   }
-  // Scaffold(
-  //     extendBodyBehindAppBar: true,
-  //     appBar: createAppBar(),
-  //     body: Obx(
-  //       () => InkWell(
-  //           onTap: () => FocusScope.of(context).unfocus(),
-  //           child: (homePageController.searchController.value.text == "")
-  //               ? createEmptySearchFieldWidget(textStyle)
-  //               : (homePageController.foodList.isEmpty && !homePageController.editMode.value)
-  //                   ? createNoFoodFoundWidget(textStyle)
-  //                   : (homePageController.foodList.isNotEmpty && !homePageController.editMode.value)
-  //                       ? createResultsWidget()
-  //                       : createTypingWidget()),
-  //     ),
-  //   );
 }

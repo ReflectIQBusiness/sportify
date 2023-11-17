@@ -8,6 +8,7 @@ import 'package:sportapplication/models/ingredient.dart';
 import 'package:sportapplication/models/program.dart';
 import 'package:sportapplication/services/search_element.dart';
 import 'package:sportapplication/views/detail_programs.dart';
+import 'package:sportapplication/views/home_page/detail_element.dart';
 import 'package:sportapplication/views/video_screen.dart';
 import 'package:video_player/video_player.dart';
 
@@ -112,6 +113,8 @@ class HomePageController extends GetxController {
   RxList foodList = [].obs;
 
   Rx<TextEditingController> searchController = TextEditingController().obs;
+  Rx<TextEditingController> quantityController = TextEditingController().obs;
+  RxDouble quantity = 1.0.obs;
   RxBool editMode = false.obs;
   changeIndex(int index) {
     currentIndex.value = index;
@@ -191,5 +194,9 @@ class HomePageController extends GetxController {
     editMode.value = true;
     editMode.refresh();
     searchController.refresh();
+  }
+
+  void goToDetailElement(element) {
+    Get.toNamed(DetailElement.routeName, arguments: element);
   }
 }

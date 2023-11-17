@@ -377,27 +377,3 @@ class DailyNutritions extends StatelessWidget {
     );
   }
 }
-//  final ingredients = homePageController.ingredients
-//         .where((p0) =>
-//             p0.mealId == homePageController.meals.firstWhere((element) => element['isSelected'])['id'] &&
-//             (p0.dateTime.day == homePageController.selectedDate.value.day &&
-//                 p0.dateTime.month == homePageController.selectedDate.value.month &&
-//                 p0.dateTime.year == homePageController.selectedDate.value.year))
-//         .toList();
-//     return Padding(
-//       padding: EdgeInsets.symmetric(
-//         horizontal: Get.width / 20,
-//       ),
-//       child: Column(
-//         children: [
-//           createTopPadding(),
-//           createAppBar(context),
-//           createDivider(),
-//           createDateTimeLine(),
-//           createDivider(),
-//           createChips(),
-//           createDivider(),
-//           createListIngredients(ingredients),
-//         ],
-//       ),
-//     );
