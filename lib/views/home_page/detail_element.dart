@@ -20,10 +20,16 @@ class DetailElement extends StatelessWidget {
         double fat = homePageController.quantity * arg['fat_total_g'] / arg['serving_size_g'];
         double carbs = homePageController.quantity * arg['carbohydrates_total_g'] / arg['serving_size_g'];
         double total = protein + fat + carbs;
+        total = total == 0 ? 1 : total;
         double calories = homePageController.quantity * arg['calories'] / arg['serving_size_g'];
         return Scaffold(
           appBar: createAppBar(),
-          floatingActionButton: createFloatBtn(),
+          floatingActionButton: createFloatBtn(
+            protein: protein,
+            fat: fat,
+            carbs: carbs,
+            calories: calories,
+          ),
           body: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(
@@ -243,9 +249,23 @@ class DetailElement extends StatelessWidget {
     );
   }
 
-  FloatingActionButton createFloatBtn() {
+  FloatingActionButton createFloatBtn({
+    required double protein,
+    required double fat,
+    required double carbs,
+    required double calories,
+  }) {
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: () {
+        homePageController.addIngredient(
+          arg,
+          protein,
+          fat,
+          carbs,
+          calories,
+        );
+        Get.back();
+      },
       backgroundColor: orangeCustom,
       child: SvgPicture.asset(
         "assets/eat.svg",
@@ -344,50 +364,3 @@ class DetailElement extends StatelessWidget {
     );
   }
 }
-// Scaffold(
-//           appBar: createAppBar(),
-//           floatingActionButton: createFloatBtn(),
-//           body: GestureDetector(
-//             onTap: () => FocusScope.of(context).unfocus(),
-//             child: SingleChildScrollView(
-//               child: Padding(
-//                 padding: EdgeInsets.symmetric(
-//                   vertical: Get.width / 40,
-//                   horizontal: Get.width / 15,
-//                 ),
-//                 child: Column(children: [
-//                   createIntroImage(),
-//                   createNameAndQuantityRow(),
-//                   const SizedBox(height: 5),
-//                   createNutritionValueRow(calories),
-//                   SizedBox(height: Get.height / 25),
-//                   creatFactRow(
-//                     total: total,
-//                     path: "assets/protein.svg",
-//                     title: "Protein",
-//                     value: protein,
-//                     color: Colors.green,
-//                   ),
-//                   createSpacer(),
-//                   creatFactRow(
-//                     total: total,
-//                     path: "assets/carb.svg",
-//                     title: "Carbohydrates",
-//                     value: carbs,
-//                     color: Colors.blue,
-//                   ),
-//                   createSpacer(),
-//                   creatFactRow(
-//                     total: total,
-//                     path: "assets/fat.svg",
-//                     title: "Fat",
-//                     value: fat,
-//                     color: Colors.red,
-//                   ),
-//                   SizedBox(height: Get.height / 18),
-//                   createAdviceContainer(),
-//                 ]),
-//               ),
-//             ),
-//           ),
-//         );

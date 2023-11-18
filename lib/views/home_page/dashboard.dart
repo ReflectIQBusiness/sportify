@@ -258,7 +258,15 @@ class Dashboard extends StatelessWidget {
               height: 20,
             ),
             Text(
-              "1250 kcal",
+              homePageController.ingredients.isNotEmpty
+                  ? homePageController.ingredients
+                      .where((p0) => p0.dateTime.toString().substring(0, 10) == DateTime.now().toString().substring(0, 10))
+                      .fold(
+                        0.0,
+                        (previousValue, element) => previousValue + element.calories,
+                      )
+                      .toStringAsFixed(2)
+                  : "0",
               style: valuesStyle,
             )
           ],
@@ -311,7 +319,7 @@ class Dashboard extends StatelessWidget {
               height: 20,
             ),
             Text(
-              "0",
+              homePageController.stepsCount.value.toString(),
               style: valuesStyle,
             )
           ],

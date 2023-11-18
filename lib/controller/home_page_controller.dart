@@ -1,8 +1,11 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:health/health.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:sportapplication/models/calorie.dart';
 import 'package:sportapplication/models/ingredient.dart';
 import 'package:sportapplication/models/program.dart';
@@ -14,14 +17,14 @@ import 'package:video_player/video_player.dart';
 
 class HomePageController extends GetxController {
   RxInt currentIndex = 0.obs;
-  Rx<DateTime> selectedDate = DateTime.now().obs;
+  Rx<DateTime> selectedDateTime = DateTime.now().obs;
   RxList<Calorie> dataCalories = [
-    Calorie(calorie: 2000, date: DateTime.now().subtract(Duration(days: 6)).toString()),
-    Calorie(calorie: 2500, date: DateTime.now().subtract(Duration(days: 5)).toString()),
-    Calorie(calorie: 1000, date: DateTime.now().subtract(Duration(days: 4)).toString()),
-    Calorie(calorie: 1500, date: DateTime.now().subtract(Duration(days: 3)).toString()),
-    Calorie(calorie: 1000, date: DateTime.now().subtract(Duration(days: 2)).toString()),
-    Calorie(calorie: 2000, date: DateTime.now().subtract(Duration(days: 1)).toString()),
+    Calorie(calorie: 2000, date: DateTime.now().subtract(const Duration(days: 6)).toString()),
+    Calorie(calorie: 2500, date: DateTime.now().subtract(const Duration(days: 5)).toString()),
+    Calorie(calorie: 1000, date: DateTime.now().subtract(const Duration(days: 4)).toString()),
+    Calorie(calorie: 1500, date: DateTime.now().subtract(const Duration(days: 3)).toString()),
+    Calorie(calorie: 1000, date: DateTime.now().subtract(const Duration(days: 2)).toString()),
+    Calorie(calorie: 2000, date: DateTime.now().subtract(const Duration(days: 1)).toString()),
     Calorie(calorie: 3000, date: DateTime.now().toString()),
   ].obs;
 
@@ -81,34 +84,7 @@ class HomePageController extends GetxController {
     },
   ].obs;
 
-  RxList<Ingredient> ingredients = [
-    Ingredient(
-      id: 1,
-      name: "Egg",
-      calories: 78,
-      protein: 6.3,
-      fat: 5.3,
-      carbs: 0.6,
-      quantity: 2,
-      unit: "unit",
-      image: "https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg.webp",
-      mealId: 1,
-      dateTime: DateTime.now(),
-    ),
-    Ingredient(
-      id: 2,
-      name: 'whole wheat bread',
-      calories: 69,
-      protein: 3.6,
-      fat: 1.2,
-      carbs: 12.4,
-      quantity: 2,
-      unit: "slice",
-      image: "https://images.eatthismuch.com/img/4028_erin_m_7511049c-b12a-4feb-8c5f-bb3c6195edba.png",
-      mealId: 1,
-      dateTime: DateTime.now(),
-    )
-  ].obs;
+  RxList<Ingredient> ingredients = <Ingredient>[].obs;
 
   RxList foodList = [].obs;
 
@@ -116,6 +92,43 @@ class HomePageController extends GetxController {
   Rx<TextEditingController> quantityController = TextEditingController().obs;
   RxDouble quantity = 1.0.obs;
   RxBool editMode = false.obs;
+
+  //calculate steps and status
+
+  RxInt stepsCount = 0.obs;
+
+  getData() async {
+    PermissionStatus permissionStatus = await Permission.activityRecognition.request();
+    if (permissionStatus == PermissionStatus.granted) {
+      HealthFactory health = HealthFactory(useHealthConnectIfAvailable: true);
+
+      // define the types to get
+      var types = [
+        HealthDataType.STEPS,
+        HealthDataType.BLOOD_GLUCOSE,
+      ];
+
+      // requesting access to the data types before reading them
+
+      var now = DateTime.now();
+
+      // request permissions to write steps and blood glucose
+      types = [HealthDataType.STEPS, HealthDataType.DISTANCE_WALKING_RUNNING];
+      var permissions = [HealthDataAccess.READ_WRITE, HealthDataAccess.READ_WRITE];
+      await health.requestAuthorization(types, permissions: permissions);
+
+      // get the number of steps for today
+      var midnight = DateTime(now.year, now.month, now.day);
+      int? steps = await health.getTotalStepsInInterval(midnight, now);
+      stepsCount.value = steps!;
+    }
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
   changeIndex(int index) {
     currentIndex.value = index;
     currentIndex.refresh();
@@ -169,8 +182,9 @@ class HomePageController extends GetxController {
   }
 
   void changeDate(DateTime selectedDate) {
-    this.selectedDate.value = selectedDate;
-    this.selectedDate.refresh();
+    selectedDateTime.value = selectedDate;
+    log(selectedDateTime.value.toString());
+    selectedDateTime.refresh();
   }
 
   void searchFoodByName() {
@@ -197,6 +211,28 @@ class HomePageController extends GetxController {
   }
 
   void goToDetailElement(element) {
+    quantity.value = element['serving_size_g'];
+    quantityController.value.text = element['serving_size_g'].toString();
+    quantity.refresh();
+    quantityController.refresh();
     Get.toNamed(DetailElement.routeName, arguments: element);
+  }
+
+  void addIngredient(element, protein, fat, carbs, calories) {
+    ingredients.add(Ingredient(
+      id: ingredients.isEmpty ? 1 : ingredients.last.id + 1,
+      name: element['name'],
+      calories: calories,
+      protein: protein,
+      fat: fat,
+      carbs: carbs,
+      quantity: quantity.value,
+      unit: "g",
+      image:
+          "https://images.ctfassets.net/grb5fvwhwnyo/VG5SnaREXOw0A46zLOPjQ/6d8f0a5a8731704096166a18d12b1ca2/Hero-Food-Fresh-Groceries.webp?w=813&fm=webp",
+      mealId: meals.firstWhere((element) => element['isSelected'] == true)['id'],
+      dateTime: selectedDateTime.value,
+    ));
+    ingredients.refresh();
   }
 }

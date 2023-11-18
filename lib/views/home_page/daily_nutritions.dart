@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,16 +17,15 @@ class DailyNutritions extends StatelessWidget {
   });
 
   final HomePageController homePageController;
-
   @override
   Widget build(BuildContext context) {
     return Obx(() {
       final ingredients = homePageController.ingredients
           .where((p0) =>
               p0.mealId == homePageController.meals.firstWhere((element) => element['isSelected'])['id'] &&
-              (p0.dateTime.day == homePageController.selectedDate.value.day &&
-                  p0.dateTime.month == homePageController.selectedDate.value.month &&
-                  p0.dateTime.year == homePageController.selectedDate.value.year))
+              (p0.dateTime.day == homePageController.selectedDateTime.value.day &&
+                  p0.dateTime.month == homePageController.selectedDateTime.value.month &&
+                  p0.dateTime.year == homePageController.selectedDateTime.value.year))
           .toList();
       return Padding(
         padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
@@ -119,7 +120,7 @@ class DailyNutritions extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "${ingredient.protein}g",
+              "${ingredient.protein.toStringAsFixed(2)}g",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -153,7 +154,7 @@ class DailyNutritions extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "${ingredient.fat}g",
+              "${ingredient.fat.toStringAsFixed(2)}g",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -188,7 +189,7 @@ class DailyNutritions extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "${ingredient.carbs}g",
+              "${ingredient.carbs.toStringAsFixed(2)}g",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -309,31 +310,36 @@ class DailyNutritions extends StatelessWidget {
   }
 
   Widget createDateTimeLine() {
-    return EasyDateTimeLine(
-      initialDate: homePageController.selectedDate.value,
-      onDateChange: (selectedDate) {
-        homePageController.changeDate(selectedDate);
-      },
-      headerProps: const EasyHeaderProps(
-        monthPickerType: MonthPickerType.switcher,
-        selectedDateFormat: SelectedDateFormat.fullDateDMY,
-      ),
-      dayProps: const EasyDayProps(
-        dayStructure: DayStructure.dayStrDayNum,
-        activeDayStyle: DayStyle(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 255, 0, 0),
-                Color.fromARGB(255, 255, 115, 0),
-              ],
+    return Obx(
+      () {
+        log('here${homePageController.selectedDateTime.value}');
+        return EasyDateTimeLine(
+          initialDate: homePageController.selectedDateTime.value,
+          onDateChange: (selectedDate) {
+            homePageController.changeDate(selectedDate);
+          },
+          headerProps: const EasyHeaderProps(
+            monthPickerType: MonthPickerType.switcher,
+            selectedDateFormat: SelectedDateFormat.fullDateDMY,
+          ),
+          dayProps: const EasyDayProps(
+            dayStructure: DayStructure.dayStrDayNum,
+            activeDayStyle: DayStyle(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color.fromARGB(255, 255, 0, 0),
+                    Color.fromARGB(255, 255, 115, 0),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -356,23 +362,14 @@ class DailyNutritions extends StatelessWidget {
         color: Colors.grey.withOpacity(0.1),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: Row(
-        children: [
-          IconButton(
-            onPressed: () {
-              Get.toNamed(AddElement.routeName);
-            },
-            icon: SvgPicture.asset(
-              'assets/add.svg',
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              'assets/calendar.svg',
-            ),
-          ),
-        ],
+      child: IconButton(
+        onPressed: () {
+          homePageController.searchController.value.clear();
+          Get.toNamed(AddElement.routeName);
+        },
+        icon: SvgPicture.asset(
+          'assets/add.svg',
+        ),
       ),
     );
   }
