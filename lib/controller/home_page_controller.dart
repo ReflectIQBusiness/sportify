@@ -1,11 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:health/health.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:sportapplication/models/calorie.dart';
 import 'package:sportapplication/models/ingredient.dart';
 import 'package:sportapplication/models/program.dart';
@@ -96,33 +93,6 @@ class HomePageController extends GetxController {
   //calculate steps and status
 
   RxInt stepsCount = 0.obs;
-
-  getData() async {
-    PermissionStatus permissionStatus = await Permission.activityRecognition.request();
-    if (permissionStatus == PermissionStatus.granted) {
-      HealthFactory health = HealthFactory(useHealthConnectIfAvailable: true);
-
-      // define the types to get
-      var types = [
-        HealthDataType.STEPS,
-        HealthDataType.BLOOD_GLUCOSE,
-      ];
-
-      // requesting access to the data types before reading them
-
-      var now = DateTime.now();
-
-      // request permissions to write steps and blood glucose
-      types = [HealthDataType.STEPS, HealthDataType.DISTANCE_WALKING_RUNNING];
-      var permissions = [HealthDataAccess.READ_WRITE, HealthDataAccess.READ_WRITE];
-      await health.requestAuthorization(types, permissions: permissions);
-
-      // get the number of steps for today
-      var midnight = DateTime(now.year, now.month, now.day);
-      int? steps = await health.getTotalStepsInInterval(midnight, now);
-      stepsCount.value = steps!;
-    }
-  }
 
   @override
   void onInit() {
