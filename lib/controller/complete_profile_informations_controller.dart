@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sportapplication/constants/colors.dart';
 import 'package:sportapplication/models/step_goal.dart';
+import 'package:sportapplication/views/home_page/home_page.dart';
 import 'package:sportapplication/views/set_objectif_screen.dart';
 
 class CompleteProfileinformations extends GetxController {
@@ -157,10 +159,65 @@ class CompleteProfileinformations extends GetxController {
 
   next(idStep) {
     currentStep.value = idStep + 1;
+    if (currentStep.value == steps.length + 1) {
+      showSuccessDialog(Get.context!);
+    }
     pageController.animateToPage(
       currentStep.value - 1,
       duration: const Duration(milliseconds: 500),
       curve: Curves.ease,
     );
+  }
+
+  Future<Object?> showSuccessDialog(context) {
+    return showGeneralDialog(
+        barrierColor: Colors.black.withOpacity(0.5),
+        transitionBuilder: (context, a1, a2, widget) {
+          return Transform.scale(
+            scale: a1.value,
+            child: Opacity(
+              opacity: a1.value,
+              child: AlertDialog(
+                insetPadding: EdgeInsets.symmetric(horizontal: Get.width / 20, vertical: Get.height / 3.5),
+                titlePadding: EdgeInsets.zero,
+                shape: OutlineInputBorder(borderRadius: BorderRadius.circular(16.0)),
+                title: SizedBox(),
+                contentPadding: EdgeInsets.zero,
+                surfaceTintColor: Colors.white,
+                backgroundColor: Colors.white,
+                content: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset('assets/success.gif', height: Get.height / 4),
+                    SizedBox(
+                      width: Get.width / 1.3,
+                      child: Text(
+                        'Your goal has been set successfully',
+                        style: Get.textTheme.bodyLarge,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Get.offAllNamed(HomePage.routeName);
+                    },
+                    child: Text('Continue', style: Get.textTheme.bodyLarge!.copyWith(color: orangeCustom)),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+        transitionDuration: Duration(milliseconds: 200),
+        barrierDismissible: false,
+        barrierLabel: '',
+        context: context,
+        pageBuilder: (context, animation1, animation2) {
+          return SizedBox();
+        });
   }
 }

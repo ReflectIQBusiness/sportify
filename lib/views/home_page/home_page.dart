@@ -5,12 +5,12 @@ import 'package:sportapplication/constants/colors.dart';
 import 'package:sportapplication/controller/home_page_controller.dart';
 import 'package:sportapplication/views/home_page/daily_nutritions.dart';
 import 'package:sportapplication/views/home_page/dashboard.dart';
+import 'package:sportapplication/views/more_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
   static const routeName = "/home-page";
-  final HomePageController homePageController =
-      Get.isRegistered<HomePageController>() ? Get.find<HomePageController>() : Get.put(HomePageController());
+  final HomePageController homePageController = Get.isRegistered<HomePageController>() ? Get.find<HomePageController>() : Get.put(HomePageController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +25,9 @@ class HomePage extends StatelessWidget {
               DailyNutritions(
                 homePageController: homePageController,
               ),
-              Container(
-                color: Colors.green,
-              ),
+              MorePage(
+                homePageController: homePageController,
+              )
             ],
           );
         },

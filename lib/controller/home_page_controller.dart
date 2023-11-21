@@ -94,6 +94,14 @@ class HomePageController extends GetxController {
 
   RxInt stepsCount = 0.obs;
 
+  //More page
+  RxBool notification = true.obs;
+
+  changeNotification() {
+    notification.value = !notification.value;
+    notification.refresh();
+  }
+
   @override
   void onInit() {
     super.onInit();
