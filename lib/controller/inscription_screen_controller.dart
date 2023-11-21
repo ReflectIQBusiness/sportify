@@ -77,7 +77,11 @@ class InscriptionScreenController extends GetxController {
   }
 
   verifyPin(context) {
-    showGeneralDialog(
+    showSuccessDialog(context);
+  }
+
+  Future<Object?> showSuccessDialog(context) {
+    return showGeneralDialog(
         barrierColor: Colors.black.withOpacity(0.5),
         transitionBuilder: (context, a1, a2, widget) {
           return Transform.scale(
