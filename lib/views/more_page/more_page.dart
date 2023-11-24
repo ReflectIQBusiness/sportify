@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sportapplication/constants/colors.dart';
 import 'package:sportapplication/controller/home_page_controller.dart';
+import 'package:sportapplication/views/more_page/achievements.dart';
+import 'package:sportapplication/views/more_page/personal_information.dart';
 
 class MorePage extends StatelessWidget {
   final HomePageController homePageController;
@@ -64,18 +66,18 @@ class MorePage extends StatelessWidget {
               CupertinoIcons.mail,
               color: orangeCustom,
             ),
-            title: Text("Contact us"),
-            trailing: Icon(Icons.arrow_forward_ios),
+            title: const Text("Contact us"),
+            trailing: const Icon(Icons.arrow_forward_ios),
           ),
           ListTile(
             leading: Icon(Icons.security, color: orangeCustom),
-            title: Text("Privacy policy"),
-            trailing: Icon(Icons.arrow_forward_ios),
+            title: const Text("Privacy policy"),
+            trailing: const Icon(Icons.arrow_forward_ios),
           ),
           ListTile(
             leading: Icon(Icons.settings_outlined, color: orangeCustom),
-            title: Text("Settings"),
-            trailing: Icon(Icons.arrow_forward_ios),
+            title: const Text("Settings"),
+            trailing: const Icon(Icons.arrow_forward_ios),
           ),
         ]),
       ),
@@ -98,7 +100,7 @@ class MorePage extends StatelessWidget {
                   CupertinoIcons.bell,
                   color: orangeCustom,
                 ),
-                title: Text("Notification settings"),
+                title: const Text("Notification settings"),
                 trailing: Obx(
                   () => Switch(
                     value: homePageController.notification.value,
@@ -124,22 +126,28 @@ class MorePage extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text("Account", style: Get.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold)),
           ListTile(
+            onTap: () => Get.toNamed(
+              PersonalInformation.routeName,
+            ),
             leading: Icon(
               CupertinoIcons.person,
               color: orangeCustom,
             ),
-            title: Text("Personal informations"),
-            trailing: Icon(Icons.arrow_forward_ios),
+            title: const Text("Personal informations"),
+            trailing: const Icon(Icons.arrow_forward_ios),
           ),
           ListTile(
+            onTap: () => Get.toNamed(
+              Achievements.routeName,
+            ),
             leading: Icon(CupertinoIcons.doc_chart, color: orangeCustom),
-            title: Text("Achievements"),
-            trailing: Icon(Icons.arrow_forward_ios),
+            title: const Text("Achievements"),
+            trailing: const Icon(Icons.arrow_forward_ios),
           ),
           ListTile(
             leading: Icon(CupertinoIcons.graph_circle, color: orangeCustom),
-            title: Text("Activity history"),
-            trailing: Icon(Icons.arrow_forward_ios),
+            title: const Text("Activity history"),
+            trailing: const Icon(Icons.arrow_forward_ios),
           ),
         ]),
       ),
@@ -165,7 +173,7 @@ class MorePage extends StatelessWidget {
         color: Colors.white,
         surfaceTintColor: Colors.white,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: Column(
             children: [
               Text(value, style: textStyle),

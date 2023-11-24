@@ -2,7 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:sportapplication/constants/colors.dart';
 import 'package:sportapplication/models/calorie.dart';
 import 'package:sportapplication/models/ingredient.dart';
 import 'package:sportapplication/models/program.dart';
@@ -212,5 +215,88 @@ class HomePageController extends GetxController {
       dateTime: selectedDateTime.value,
     ));
     ingredients.refresh();
+  }
+
+  void deleteAccount() {
+    Get.defaultDialog(
+      title: "",
+      titlePadding: EdgeInsets.zero,
+      contentPadding: EdgeInsets.zero,
+      backgroundColor: Colors.transparent,
+      content: Container(
+        width: Get.width,
+        height: Get.height / 3,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.black,
+              Colors.black.withOpacity(0.7),
+            ],
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: Get.height / 50,
+            ),
+            SvgPicture.asset(
+              "assets/danger.svg",
+              width: Get.width / 6,
+              height: Get.width / 6,
+              color: Colors.white,
+            ),
+            SizedBox(
+              height: Get.height / 25,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Are you sure you want to delete your account?',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: Get.width / 28,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(
+              height: Get.height / 25,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text(
+                      "No",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: Get.width / 25,
+                      ),
+                    )),
+                TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text(
+                      "Yes",
+                      style: TextStyle(
+                        color: orangeCustom,
+                        fontSize: Get.width / 25,
+                      ),
+                    )),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

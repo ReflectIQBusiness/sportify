@@ -8,6 +8,8 @@ import 'package:sportapplication/views/home_page/home_page.dart';
 import 'package:sportapplication/views/inscription.dart';
 import 'package:sportapplication/views/introduction_screen.dart';
 import 'package:sportapplication/views/login.dart';
+import 'package:sportapplication/views/more_page/achievements.dart';
+import 'package:sportapplication/views/more_page/personal_information.dart';
 import 'package:sportapplication/views/set_objectif_screen.dart';
 import 'package:sportapplication/views/splash_screen.dart';
 import 'package:sportapplication/views/verify_phone.dart';
@@ -22,61 +24,61 @@ var routes = [
     name: IntroductionScreen.routeName,
     page: () => IntroductionScreen(),
     transition: Transition.leftToRight,
-    transitionDuration: Duration(milliseconds: 400),
+    transitionDuration: const Duration(milliseconds: 400),
   ),
   GetPage(
     name: Login.routeName,
     page: () => Login(),
     transition: Transition.leftToRightWithFade,
-    transitionDuration: Duration(milliseconds: 400),
+    transitionDuration: const Duration(milliseconds: 400),
   ),
   GetPage(
     name: Inscription.routeName,
     page: () => Inscription(),
     transition: Transition.leftToRightWithFade,
-    transitionDuration: Duration(milliseconds: 400),
+    transitionDuration: const Duration(milliseconds: 400),
   ),
   GetPage(
     name: VerifyPin.routeName,
     page: () => VerifyPin(),
     transition: Transition.rightToLeft,
-    transitionDuration: Duration(milliseconds: 400),
+    transitionDuration: const Duration(milliseconds: 400),
   ),
   GetPage(
     name: ChooseProfilePic.routeName,
     page: () => ChooseProfilePic(),
     transition: Transition.rightToLeft,
-    transitionDuration: Duration(milliseconds: 400),
+    transitionDuration: const Duration(milliseconds: 400),
   ),
   GetPage(
     name: SetObjectifScreen.routeName,
     page: () => SetObjectifScreen(),
     transition: Transition.rightToLeft,
-    transitionDuration: Duration(milliseconds: 400),
+    transitionDuration: const Duration(milliseconds: 400),
   ),
   GetPage(
     name: ForgetPage.routeName,
     page: () => ForgetPage(),
     transition: Transition.rightToLeft,
-    transitionDuration: Duration(milliseconds: 400),
+    transitionDuration: const Duration(milliseconds: 400),
   ),
   GetPage(
     name: HomePage.routeName,
     page: () => HomePage(),
     transition: Transition.rightToLeft,
-    transitionDuration: Duration(milliseconds: 400),
+    transitionDuration: const Duration(milliseconds: 400),
   ),
   GetPage(
     name: DetailPrograms.routeName,
     page: () => DetailPrograms(),
     transition: Transition.rightToLeft,
-    transitionDuration: Duration(milliseconds: 400),
+    transitionDuration: const Duration(milliseconds: 400),
   ),
   GetPage(
     name: VideoScreen.routeName,
     page: () => VideoScreen(),
     transition: Transition.rightToLeft,
-    transitionDuration: Duration(milliseconds: 400),
+    transitionDuration: const Duration(milliseconds: 400),
   ),
   GetPage(
     name: AddElement.routeName,
@@ -87,5 +89,14 @@ var routes = [
     name: DetailElement.routeName,
     page: () => DetailElement(),
     transition: Transition.topLevel,
+  ),
+  GetPage(
+    name: PersonalInformation.routeName,
+    page: () => PersonalInformation(),
+    transition: Transition.topLevel,
+  ),
+  GetPage(
+    name: Achievements.routeName,
+    page: () => Achievements(),
   ),
 ];
