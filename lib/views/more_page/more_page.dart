@@ -5,6 +5,7 @@ import 'package:sportapplication/constants/colors.dart';
 import 'package:sportapplication/controller/home_page_controller.dart';
 import 'package:sportapplication/views/more_page/achievements.dart';
 import 'package:sportapplication/views/more_page/activity_history.dart';
+import 'package:sportapplication/views/more_page/contact_us.dart';
 import 'package:sportapplication/views/more_page/personal_information.dart';
 
 class MorePage extends StatelessWidget {
@@ -66,6 +67,9 @@ class MorePage extends StatelessWidget {
             leading: Icon(
               CupertinoIcons.mail,
               color: orangeCustom,
+            ),
+            onTap: () => Get.toNamed(
+              ContactUS.routeName,
             ),
             title: const Text("Contact us"),
             trailing: const Icon(Icons.arrow_forward_ios),

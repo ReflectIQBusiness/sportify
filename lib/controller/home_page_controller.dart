@@ -32,19 +32,17 @@ class HomePageController extends GetxController {
     Program(
       id: 1,
       name: "Chest Workouts",
-      image: "https://www.workouthealthy.com/cdn-cgi/image/quality%3D85/assets/images/Blog/best-chest-workouts-for-definition.png",
+      image: "https://www.muscletech.com/cdn/shop/articles/muscletech-chest-workout.jpg?v=1690565829",
     ),
     Program(
       id: 2,
       name: "Abs Workouts",
-      image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFoeBRdfkTwKx3mWWj-8YVMB7qVI_LKSGaunYkd78MrvpkisSBKXrbpF_LbG-PAAPmlFQ&usqp=CAU",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFoeBRdfkTwKx3mWWj-8YVMB7qVI_LKSGaunYkd78MrvpkisSBKXrbpF_LbG-PAAPmlFQ&usqp=CAU",
     ),
     Program(
       id: 3,
       name: "Legs Workouts",
-      image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDQ7zl-9saJcmY-J2V_14ZigWdKUT--CWnhllXywJlGvMAqeYBT1FGlQ5RXoYnFKABkxs&usqp=CAU",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDQ7zl-9saJcmY-J2V_14ZigWdKUT--CWnhllXywJlGvMAqeYBT1FGlQ5RXoYnFKABkxs&usqp=CAU",
     ),
     Program(
       id: 4,
@@ -209,8 +207,7 @@ class HomePageController extends GetxController {
       carbs: carbs,
       quantity: quantity.value,
       unit: "g",
-      image:
-          "https://images.ctfassets.net/grb5fvwhwnyo/VG5SnaREXOw0A46zLOPjQ/6d8f0a5a8731704096166a18d12b1ca2/Hero-Food-Fresh-Groceries.webp?w=813&fm=webp",
+      image: "https://images.ctfassets.net/grb5fvwhwnyo/VG5SnaREXOw0A46zLOPjQ/6d8f0a5a8731704096166a18d12b1ca2/Hero-Food-Fresh-Groceries.webp?w=813&fm=webp",
       mealId: meals.firstWhere((element) => element['isSelected'] == true)['id'],
       dateTime: selectedDateTime.value,
     ));

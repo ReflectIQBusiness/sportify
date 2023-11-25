@@ -43,11 +43,14 @@ class Achievements extends StatelessWidget {
 
   AppBar createAppBar() {
     return AppBar(
-        title: Text("Achievements",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: Get.width / 15,
-            )));
+        title: Text(
+      "Achievements",
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: Get.width / 20,
+        fontWeight: FontWeight.bold,
+      ),
+    ));
   }
 
   EdgeInsets returnGeneralPadding() {
@@ -65,11 +68,11 @@ class Achievements extends StatelessWidget {
   }
 
   SliverGridDelegateWithFixedCrossAxisCount returnSliverDelegate() {
-    return const SliverGridDelegateWithFixedCrossAxisCount(
+    return SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 3,
       crossAxisSpacing: 0,
       mainAxisSpacing: 10,
-      mainAxisExtent: 130,
+      mainAxisExtent: Get.width / 3,
     );
   }
 
