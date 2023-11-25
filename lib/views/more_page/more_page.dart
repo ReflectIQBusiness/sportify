@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sportapplication/constants/colors.dart';
 import 'package:sportapplication/controller/home_page_controller.dart';
 import 'package:sportapplication/views/more_page/achievements.dart';
+import 'package:sportapplication/views/more_page/activity_history.dart';
 import 'package:sportapplication/views/more_page/personal_information.dart';
 
 class MorePage extends StatelessWidget {
@@ -145,6 +146,9 @@ class MorePage extends StatelessWidget {
             trailing: const Icon(Icons.arrow_forward_ios),
           ),
           ListTile(
+            onTap: () => Get.toNamed(
+              ActivityHistory.routeName,
+            ),
             leading: Icon(CupertinoIcons.graph_circle, color: orangeCustom),
             title: const Text("Activity history"),
             trailing: const Icon(Icons.arrow_forward_ios),

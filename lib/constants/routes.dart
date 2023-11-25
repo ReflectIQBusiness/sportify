@@ -9,6 +9,7 @@ import 'package:sportapplication/views/inscription.dart';
 import 'package:sportapplication/views/introduction_screen.dart';
 import 'package:sportapplication/views/login.dart';
 import 'package:sportapplication/views/more_page/achievements.dart';
+import 'package:sportapplication/views/more_page/activity_history.dart';
 import 'package:sportapplication/views/more_page/personal_information.dart';
 import 'package:sportapplication/views/set_objectif_screen.dart';
 import 'package:sportapplication/views/splash_screen.dart';
@@ -98,5 +99,9 @@ var routes = [
   GetPage(
     name: Achievements.routeName,
     page: () => Achievements(),
+  ),
+  GetPage(
+    name: ActivityHistory.routeName,
+    page: () => ActivityHistory(),
   ),
 ];
