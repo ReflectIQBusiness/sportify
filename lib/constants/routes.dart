@@ -10,6 +10,7 @@ import 'package:sportapplication/views/introduction_screen.dart';
 import 'package:sportapplication/views/login.dart';
 import 'package:sportapplication/views/more_page/achievements.dart';
 import 'package:sportapplication/views/more_page/activity_history.dart';
+import 'package:sportapplication/views/more_page/contact_us.dart';
 import 'package:sportapplication/views/more_page/personal_information.dart';
 import 'package:sportapplication/views/more_page/privacy_policy.dart';
 import 'package:sportapplication/views/set_objectif_screen.dart';
@@ -108,5 +109,11 @@ var routes = [
   GetPage(
     name: PrivacyPolicy.routeName,
     page: () => PrivacyPolicy(),
+  ),
+  GetPage(
+    name: ContactUS.routeName,
+    page: () => ContactUS(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 400),
   ),
 ];

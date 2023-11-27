@@ -51,6 +51,9 @@
 	<string>We need to acces to Camera to upload a picture</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need to acces to Photo Library to upload a picture</string>
-	
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tel</string>
+	</array>
 </dict>
 </plist>

@@ -23,6 +23,7 @@ dependencies:
   permission_handler: ^11.0.1
   flutter_widget_from_html_core: ^0.14.7
   percent_indicator: ^4.2.3
+  url_launcher: ^6.2.1
 
 
 dev_dependencies:
