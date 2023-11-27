@@ -6,6 +6,7 @@ import 'package:sportapplication/controller/home_page_controller.dart';
 import 'package:sportapplication/views/more_page/achievements.dart';
 import 'package:sportapplication/views/more_page/activity_history.dart';
 import 'package:sportapplication/views/more_page/personal_information.dart';
+import 'package:sportapplication/views/more_page/privacy_policy.dart';
 
 class MorePage extends StatelessWidget {
   final HomePageController homePageController;
@@ -71,6 +72,9 @@ class MorePage extends StatelessWidget {
             trailing: const Icon(Icons.arrow_forward_ios),
           ),
           ListTile(
+            onTap: () => Get.toNamed(
+              PrivacyPolicy.routeName,
+            ),
             leading: Icon(Icons.security, color: orangeCustom),
             title: const Text("Privacy policy"),
             trailing: const Icon(Icons.arrow_forward_ios),
