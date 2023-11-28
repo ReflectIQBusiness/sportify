@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -97,10 +98,41 @@ class HomePageController extends GetxController {
 
   //More page
   RxBool notification = true.obs;
+  //Setting page
+  RxBool kg = false.obs;
+  RxBool height = false.obs;
+  RxBool workout = true.obs;
+  RxBool nutrition = true.obs;
+  RxBool news = true.obs;
 
   changeNotification() {
     notification.value = !notification.value;
     notification.refresh();
+  }
+
+  changeKg() {
+    kg.value = !kg.value;
+    kg.refresh();
+  }
+
+  changeHeight() {
+    height.value = !height.value;
+    height.refresh();
+  }
+
+  changeWorkout() {
+    workout.value = !workout.value;
+    workout.refresh();
+  }
+
+  changeNutrition() {
+    nutrition.value = !nutrition.value;
+    nutrition.refresh();
+  }
+
+  changeNews() {
+    news.value = !news.value;
+    news.refresh();
   }
 
   @override

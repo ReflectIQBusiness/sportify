@@ -8,6 +8,7 @@ import 'package:sportapplication/views/more_page/activity_history.dart';
 import 'package:sportapplication/views/more_page/contact_us.dart';
 import 'package:sportapplication/views/more_page/personal_information.dart';
 import 'package:sportapplication/views/more_page/privacy_policy.dart';
+import 'package:sportapplication/views/more_page/settings_page.dart';
 
 class MorePage extends StatelessWidget {
   final HomePageController homePageController;
@@ -84,6 +85,9 @@ class MorePage extends StatelessWidget {
             trailing: const Icon(Icons.arrow_forward_ios),
           ),
           ListTile(
+            onTap: () => Get.toNamed(
+              SettingsPage.routeName,
+            ),
             leading: Icon(Icons.settings_outlined, color: orangeCustom),
             title: const Text("Settings"),
             trailing: const Icon(Icons.arrow_forward_ios),

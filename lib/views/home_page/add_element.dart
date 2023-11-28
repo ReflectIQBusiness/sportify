@@ -6,7 +6,7 @@ import 'package:sportapplication/controller/home_page_controller.dart';
 
 class AddElement extends StatelessWidget {
   static const String routeName = '/add_element';
-  HomePageController homePageController = Get.put(HomePageController());
+  final HomePageController homePageController = Get.put(HomePageController());
   AddElement({super.key});
 
   @override

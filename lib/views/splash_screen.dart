@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sportapplication/constants/colors.dart';
 import 'package:sportapplication/controller/splash_screen_controller.dart';
 
 class SplashScreen extends StatelessWidget {

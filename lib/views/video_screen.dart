@@ -9,7 +9,7 @@ class VideoScreen extends StatelessWidget {
   VideoScreen({super.key});
   static const routeName = "/video-screen";
   final HomePageController homePageController = Get.isRegistered() ? Get.find() : Get.put(HomePageController());
-  VideoPlayerController videoPlayerController = Get.arguments;
+  final VideoPlayerController videoPlayerController = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
